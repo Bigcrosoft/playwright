@@ -58,7 +58,7 @@ export interface Instrumentation {
   onBeforeCall(sdkObject: SdkObject, metadata: CallMetadata): Promise<void>;
   onBeforeInputAction(sdkObject: SdkObject, metadata: CallMetadata): Promise<void>;
   onCallLog(sdkObject: SdkObject, metadata: CallMetadata, logName: string, message: string): void;
-  onAfterCall(sdkObject: SdkObject, metadata: CallMetadata): Promise<void>;
+  onAfterCall(sdkObject: SdkObject, metadataAndContextIdToPrimaryId : CallMetadata): Promise<void>;
   onPageOpen(page: Page): void;
   onPageClose(page: Page): void;
   onBrowserOpen(browser: Browser): void;
