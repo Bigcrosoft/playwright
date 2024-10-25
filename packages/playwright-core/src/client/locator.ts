@@ -349,6 +349,10 @@ export class Locator implements api.Locator {
     await this._frame._channel.waitForSelector({ selector: this._selector, strict: true, omitReturnValue: true, ...options });
   }
 
+  async waitForOmittedFromActionReport(options?: channels.FrameWaitForSelectorOptions): Promise<void> {
+    await this._frame._channel.waitForSelector({ selector: this._selector, strict: true, omitReturnValue: true, ...options, omitAction: true });
+  }
+
   async _expect(expression: string, options: Omit<FrameExpectOptions, 'expectedValue'> & { expectedValue?: any }): Promise<{ matches: boolean, received?: any, log?: string[], timedOut?: boolean }> {
     const params: channels.FrameExpectParams = { selector: this._selector, expression, ...options, isNot: !!options.isNot };
     params.expectedValue = serializeArgument(options.expectedValue);
